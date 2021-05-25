@@ -9,5 +9,5 @@ func main() {
 
 	server.GET("/", func(c *gin.Context) { c.JSON(200, gin.H{"message": "Hola"}) })
 
-	server.Run(":8080")
+	server.Run(":3000")
 }
