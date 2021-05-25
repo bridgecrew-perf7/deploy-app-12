@@ -12,8 +12,8 @@ func main() {
 	fmt.Println("Go Program")
 	server := echo.New()
 	server.GET(path.Join("/"), Version)
-	
-	server.Start(":1323")
+
+	server.Start(":3000")
 
 }
 func Version(context echo.Context) error {
