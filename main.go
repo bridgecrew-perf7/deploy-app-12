@@ -1,13 +1,21 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+	"net/http"
+	"path"
+
+	"github.com/labstack/echo"
+)
 
 func main() {
-	server := gin.New()
+	fmt.Println("Go Program")
+	server := echo.New()
+	server.GET(path.Join("/"), Version)
+	
+	server.Start(":1323")
 
-	server.Use(gin.Logger(), gin.Recovery())
-
-	server.GET("/", func(c *gin.Context) { c.JSON(200, gin.H{"message": "Hola"}) })
-
-	server.Run(":3000")
+}
+func Version(context echo.Context) error {
+	return context.JSON(http.StatusOK, map[string]interface{}{"version": 2})
 }
